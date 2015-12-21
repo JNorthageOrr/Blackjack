@@ -175,8 +175,8 @@ var computerMove = function(){
 //console.log('cScore' +cScore);
 var display = $('.score');
 var displayText;
-
-	while((cScores <=17)&&(fScore < 21)) {
+	var stay = $('.buttonR').hide();
+	while((cScores <=17)&&(fScore <= 21)) {
 		computerCard();
 	}
 	if ((cScores < fScore)&&(fScore>21)){

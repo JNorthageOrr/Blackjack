@@ -103,7 +103,7 @@ body {
 	font-color: white;
 	position: relative;
 	top: 210px;
-	left: 30px;
+	left: 0px;
 }
 .pName{
 	font-color: white;
@@ -115,12 +115,12 @@ body {
 	font-color: white;
 	position: relative;
 	top: 210px;
-	left: 30px;	
+	left: 0px;	
 }
 .score{
 	position:relative;
 	top: 350;
-	left: 550px;
+	left: 500px;
 }
 .p_bc{
 	position: relative;
