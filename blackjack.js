@@ -67,7 +67,9 @@ var pHand2 = [];
 var cHand = [];
 var cHand2 = [];
 var pScore = 0;
+var fScore;
 var cScore = 0;
+var cScores;
 
 var createDecks = function (){
 	playerDeck = thisDeck(completeDeck);
@@ -107,14 +109,25 @@ var playerCard = function(){
 	
 	var displayText = dValue + suit;
 	var playerCardHolder = $('.player_hand');
-	var displayCard = $('<span>').text(displayText).css({"height": "70",									"color": color, 
+	var displayCard = $('<div>').velocity("fadeIn", { duration: 1500 })
+								.text(displayText).css({"height": "70",
+								"color": color, 
 								"width": "70",
 								"position":"relative",
 								"background-color": "white",
-								"border-radius": "1em"
+								"border-radius": ".3em",
+								"float":"left",
+								"top":"-70px"
 								}).appendTo(playerCardHolder);
 	pScore = scoreEval(thisCard);
 	var displayScore = $('.p_pl').text(pScore);
+	fScore = pScore;
+	if(fScore > 21){
+		var hit = $('.buttonL').hide();
+		var stay = $('.buttonR').hide();
+		computerMove();
+	}
+
 	return thisCard;
 }
 
@@ -143,32 +156,50 @@ var computerCard = function(){
 
 	var displayText = dValue + suit;
 	var computerCardHolder = $('.computer_hand');
-	var displayCard = $('<span>').text(displayText).css({"height": "70",
+	var displayCard = $('<div>').velocity("fadeIn", { duration: 1500 })
+								.text(displayText).css({"height": "70",
 								"color": color, 
 								"width": "70",
 								"position":"relative",
 								"background-color": "white",
-								"border-radius": "1em"
+								"border-radius": ".3em", 
+								"float":"left",
+								"top":"-70px"
 								}).appendTo(computerCardHolder);
 	cScore = scoreEval(thisCard);
+	cScores = cScore;
 	var displayScore = $('.p_co').text(cScore);
 	return thisCard
 }
 var computerMove = function(){
-console.log('cScore' +cScore);
-	while(cScore <=17){
-		setTimeout(computerCard(), 3000);
+//console.log('cScore' +cScore);
+var display = $('.score');
+var displayText;
+
+	while((cScores <=17)&&(fScore < 21)) {
+		computerCard();
 	}
-	if(cScore > 17){
-		if(pScore > cScore){
-			console.log('Player Wins!');
-		}else if((cScore > pScore)&&(cScore <= 21)) {
-			console.log('Computer Wins!')
-		}else if(cScore === pScore){
-			console.log('Tie. Computer Wins!')
+	if ((cScores < fScore)&&(fScore>21)){
+			displayText = 'Computer Wins!';
+			display.text(displayText);
+	}
+	if(cScores > 17){
+		console.log('fScore: '+ fScore + " cScore: "+ cScores)
+		if((fScore > cScores)&&(fScore<=21)){
+			displayText = 'Player Wins!';
+			display.text(displayText);
+		}else if((fScore < cScores)&&(cScores>21)){
+			displayText = 'Player Wins!';
+			display.text(displayText);
+		}else if((cScores > fScore)&&(cScore <= 21)) {
+			displayText = 'Computer Wins!';
+			display.text(displayText);
+		}else if(cScores === fScore){
+			displayText = 'Tie. Computer Wins!';
+			display.text(displayText);
 		}
 	}
-}
+}	
 var scoreEval = function(card){
 	var thisCard = card;
 	var pCard;
@@ -219,28 +250,28 @@ var scoreEval = function(card){
 		var sum = 0;
 		
 
-		console.log('Bust Score b4: '+bustScore);
+		//console.log('Bust Score b4: '+bustScore);
 		
 		if(bustScore > 21){
 			//var test = hand.indexOf(1)
 			//console.log('test: ' +test)
-			console.log('hand2: '+hand2)	
+			//console.log('hand2: '+hand2)	
 			var eleven = hand2.indexOf(11);
-			console.log('indexEle: '+eleven)
+			//console.log('indexEle: '+eleven)
 				if (eleven >= 0){
 						hand2[eleven] = 1;
-						console.log('hand2Sub: '+hand2)
+					//	console.log('hand2Sub: '+hand2)
 					}
 	//	}
 	
 			hand2.forEach(function(y){
 				sum = sum + parseInt(y);
-				console.log('sumV: '+sum)
+			//	console.log('sumV: '+sum)
 				//console.log(typeof(y))
 			}) 
-			console.log('sum: '+sum)
+			//console.log('sum: '+sum)
 			if(sum > 21){
-				bustScore = "Bust!";
+				bustScore = sum;
 
 				return bustScore;
 			}
@@ -252,7 +283,7 @@ var scoreEval = function(card){
 
 		}
 		else {
-			console.log('bustScore: '+bustScore);
+		//	console.log('bustScore: '+bustScore);
 			return bustScore};
 	}
 	
@@ -281,9 +312,31 @@ var addEventListeners = function(){
     		initialDeal();
     		$(this).hide()
     		});
+
+    	var clickReload = $('.buttonRe');
+    	$(clickReload).on('click', function(){
+    		location.reload(true);
+    		});
 	}
 
 	$(document).ready(function(){
 		addEventListeners();
 	})
 });
+/*
+ <script>
+  $(function() {
+    setInterval(function() {
+      var shiftX = 600;
+      var shiftY = 300;
+      
+      var shiftZ = -500;
+      $('.circle')
+        .velocity({translateX: shiftX, translateY: shiftY, translateZ: shiftZ}, 3000)
+    })
+  })
+</script> 
+
+<svg class="circle">
+					<circle class="circle" cx="40" cy="40" r="30" fill="orange" z-element="100"stroke="black" stroke-width="5"></circle>
+				</svg>	*/

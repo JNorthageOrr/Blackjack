@@ -8,30 +8,188 @@ body, input {
 
 body {
   background-color: #232323;
+  position: absolute;
   color: #111111;
+  z-index: -10;
 }
 
 .wrapper {
-  width: 1200px;
-  height: 95%;
+  width: 1300px;
+  height: 100%;
+  position: absolute;
   margin:0 auto;
-  background-color:#AAA;
+  background-color:#111;
+  overflow: none;
   border-radius: 1em;
+  z-index: -9;
     
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .table {
-  height: calc(100% - 190px);
+  height: 600px;
   width: 100%;
+  position: relative;
   line-height: 1.5em;
   overflow: none;
-  background-color: rgba(30,200,30,0.5);
-  border-radius: 1em;
+  background-color: rgba(1, 1, 1, .9);
   margin: 10px auto;
-  overflow: none;
+  border-radius: 1em;
   color: red;
+  z-index: 0;
   
 }
+.circle {
+	top: 20px;
+	position: absolute;
+	width: 800px;
+	height: 120px;
+	left: -200px;
+	z-index: 100000;
+}
+.aContainer{
+	height: 300px;
+	width: 100%;
+	float: auto;
+}
+.player_hand{
+	height: 200px;
+	width: 450px;
+	position: relative;
+	display: block;
+	background-color: rgba(0, 82, 70, 0.9);
+	color: white;
+	right: -700px;
+	top: 0px;
+	border-style: solid;
+	border-radius: 1em;
+	z-index: 1;
+
+}
+
+.computer_hand{
+	height: 200px;
+	width: 450px;
+	background-color: rgba(0, 82, 70, 0.9);
+	position: relative;
+	display: block;
+	top: -205px;
+	left: 100px;
+	margin-top: 0px;
+	color: white;
+	border-style: solid;
+	border-radius: 1em;
+	z-index: 1;
+}
+.p_wr{
+	position: relative;
+	left: 20px;
+}
+.p_ta{
+	position: relative;
+	left: 20px;
+}
+.p_pl{
+	font-color: white;
+	position: relative;
+	top: 210px;
+	left: 0px;
+}
+.p_co{
+	font-color: white;
+	position: relative;
+	top: 210px;
+	left: 30px;
+}
+.pName{
+	font-color: white;
+	position: relative;
+	top: 210px;
+	left: 0px;	
+}
+.cName{
+	font-color: white;
+	position: relative;
+	top: 210px;
+	left: 30px;	
+}
+.score{
+	position:relative;
+	top: 350;
+	left: 550px;
+}
+.p_bc{
+	position: relative;
+	left: 10px;
+}
+.announce{
+	width: 600px;
+	height: 50px;
+	position: relative;
+	line-height: 20pt;
+	padding-top: 20px;
+	background-color: rgb(1,1,1);
+	border-radius: 1em;
+	left: 40px;
+	top: -30px;
+}
+.button_cont{
+	
+	width: 600px;
+	height: 50px;
+	position: relative;
+	line-height: 20pt;
+	padding-top: 20px;
+	background-color: rgb(30, 30, 30);
+	border-radius: 1em;
+	left: 300px;
+	top: 60px;
+
+}
+.buttonL {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: 15px;
+  right: 350px;
+  border-radius: 1em;
+  background-color: rgb(100, 100, 100);
+
+  
+}
+.buttonR {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: 15px;
+  left: 350px;
+  border-radius: 1em;
+  background-color: rgb(100, 100, 100);
+}
+.buttonD {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: 15px;
+  right: 465px;
+  border-radius: 1em;
+  background-color: rgb(100, 100, 100);
+}
+.buttonRe {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: 15px;
+  right: 40px;
+  border-radius: 1em;
+  background-color: rgb(100, 100, 100);
+}
+
+/*
 .player_deck{
 	height: 200px;
 	width: 150px;
@@ -62,37 +220,8 @@ body {
 	margin-top: -230px;
 	border-radius: 1em;
 }
-
-.player_hand{
-	height: 200px;
-	width: 250px;
-	position: relative;
-	display: inline-block;
-	background-color: rgba(1,1,1,.8);
-	margin-right: 50px;
-	margin-top: 50px;
-	float: right;
-	border-radius: 1em;
-
-}
-
-.computer_hand{
-	height: 200px;
-	width: 250px;
-	background-color: rgb(200, 60, 60);
-	position: relative;
-	margin-left: 180px;
-	margin-top: 50px;
-	border-radius: 1em;
-}
-.p_wr{
-	position: relative;
-	left: 20px;
-}
-.p_ta{
-	position: relative;
-	left: 20px;
-}
+*/
+/*
 .p_pde{
 	font-color: white;
 	position: relative;
@@ -109,59 +238,4 @@ body {
 	position: relative;
 	top: -45px;
 	left: 10px;	
-}
-.p_pl{
-	font-color: white;
-	position: relative;
-	top: -70px;
-	left: 10px;
-}
-.p_co{
-	font-color: white;
-	position: relative;
-	top: -45px;
-	left: -10px;
-}
-.p_bc{
-	position: relative;
-	left: 10px;
-}
-.button_cont{
-	
-	width: 100%;
-	height: 50px;
-	position: relative;
-	line-height: 20pt;
-	padding-top: 20px;
-	background-color: rgb(30, 200, 150);
-	border-radius: 1em;
-
-}
-.buttonL {
-  width: 100px;
-  height: 50px;
-  position: relative;
-  top: -85px;
-  left: 400px;
-
-  
-}
-.buttonR {
-  width: 100px;
-  height: 50px;
-  position: absolute;
-  top: 15px;
-  right: 400px;
-}
-.buttonD {
-  width: 100px;
-  height: 50px;
-  position: absolute;
-  top: 15px;
-  right: 550px;
-}
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+}*/
